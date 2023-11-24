@@ -13,5 +13,13 @@ public class HomeController {
         return "index"; // Retorna index.html dentro de /templates
     }
 }
-    
+    @Controller
+public class SearchController{
+
+    @GetMapping("/search")
+    public String search(){
+        return "result";
+    }
+}
+
 }

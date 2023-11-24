@@ -1,0 +1,45 @@
+body{
+    display: flex;
+    align-items:center ;
+    justify-content: center;
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(180deg, #001E29 0%, #68A4AF 46%, #FEFEE6 100%);
+}
+.container{
+    margin-top: 250px;
+    margin-bottom: 200px;
+    height: 851px;
+    width: 1550px;
+    display: grid;
+    grid-template-columns: repeat(7,200px);
+    grid-template-rows: repeat(3,270px) ;
+    gap: 20px;
+}
+img{
+   position: absolute;
+   left: 44.8%;
+   top: -10px;
+}
+
+.red{
+    background-color: red;   
+}
+.blue{
+    background-color: blue;
+}
+.green{
+    background-color: green;
+}
+.yellow{
+    background-color: yellow;
+}
+.black{
+    background-color: black;
+}
+.white{
+    background-color: white;
+}
+.pink{
+    background-color: pink;
+}
