@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import java.io.IOException;
-import java.util.Scanner;
 import java.util.ArrayList;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -9,56 +8,40 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 
-public class Crawl {
-
-    private static String searchTerm;
+public class Crawl2 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        String searchTerm = Crawl.getSearchTerm();
+  
+        String url = "https://www.magazineluiza.com.br/busca/" + searchTerm;
+        crawl2(1, url, new ArrayList<>());
 
-        System.out.println("Digite o nome ou código do produto que deseja pesquisar:");
-        searchTerm = scanner.nextLine();
-
-        // Substituí espaços por '-' e removi outros caracteres especiais
-        searchTerm = searchTerm.replaceAll("\\s", "-").replaceAll("[^a-zA-Z0-9-]", "");
-      
-        String url = "https://www.kabum.com.br/busca/" + searchTerm;
-        crawl(1, url, new ArrayList<>());
-
-        scanner.close();
+ 
     }
 
-    public static String getSearchTerm(){
-        return searchTerm;
-    }
-
-    public static void setSearchTerm(String serachTerm){
-        Crawl.searchTerm = searchTerm;
-    }
-
-    private static void crawl(int level, String url, ArrayList<String> visited) {
+    private static void crawl2(int level, String url, ArrayList<String> visited) {
         if (level <= 5) {
             Document doc = request(url, visited);
             if (doc != null) {
                 // Obtém links da classe 'productCard'
-                Elements productLinks = doc.select(".productCard > a[href]");
+                Elements productLinks = doc.select(".sc-APcvf.ejDyHN > a[href]");
                 for (Element productLink : productLinks) {
                     String productUrl = productLink.absUrl("href");
                     if (!visited.contains(productUrl)) {
-                        crawl(level + 1, productUrl, visited);
+                        crawl2(level + 1, productUrl, visited);
                         return;  // Interrompe a busca após encontrar um link
                     }
                 }
     
-                Elements priceElements = doc.select(".finalPrice");
+                Elements priceElements = doc.select(".sc-dhKdcB.ryZxx");
                 if (!priceElements.isEmpty()) {
                     String price = priceElements.text();
     
                     // Obtém o nome do produto
-                    Element productNameElement = doc.selectFirst(".sc-89bddf0f-6.dVrDvy");
+                    Element productNameElement = doc.selectFirst(".sc-kpDqfm.gXZPqL");
                     String productName = productNameElement != null ? productNameElement.text() : "Nome do Produto Não Encontrado";
     
                     // Obtém a URL da imagem do produto
-                    Element productImageElement = doc.selectFirst(".iiz__img[src]");
+                    Element productImageElement = doc.selectFirst(".sc-cWSHoV.jnuWYf");
                     String productImageUrl = productImageElement != null ? productImageElement.absUrl("src") : "URL da Imagem Não Encontrada";
     
                     System.out.println("Nome do Produto: " + productName);
@@ -67,7 +50,7 @@ public class Crawl {
                     System.out.println("URL da Imagem: " + productImageUrl);
                     return;  // Interrompe a busca após encontrar o preço
                 } else {
-                    System.out.println("Elemento com classe 'finalPrice' não encontrado no link: " + url);
+                    System.out.println("Elemento com classe 'price-value' não encontrado no link: " + url);
                 }
             }
         }

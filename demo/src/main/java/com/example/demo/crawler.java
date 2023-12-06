@@ -12,6 +12,7 @@ public class crawler {
 
         // Criar uma instância da classe Crawl
         Crawl.main(args);
+        Crawl2.main(args);
 
         // Se você deseja chamar outro método da classe Crawl, você pode fazer algo como:
         // crawlInstance.outroMetodo();
