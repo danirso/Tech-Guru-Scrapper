@@ -23,25 +23,22 @@ public class Crawl2 {
         if (level <= 5) {
             Document doc = request(url, visited);
             if (doc != null) {
-                // Obtém links da classe 'productCard'
                 Elements productLinks = doc.select(".sc-APcvf.ejDyHN > a[href]");
                 for (Element productLink : productLinks) {
                     String productUrl = productLink.absUrl("href");
                     if (!visited.contains(productUrl)) {
                         crawl2(level + 1, productUrl, visited);
-                        return;  // Interrompe a busca após encontrar um link
+                        return;  
                     }
                 }
     
-                Elements priceElements = doc.select(".sc-dhKdcB.ryZxx");
+                Elements priceElements = doc.select("[data-testid=price-value]");
                 if (!priceElements.isEmpty()) {
-                    String price = priceElements.text();
+                    String price = priceElements.text().trim();
     
-                    // Obtém o nome do produto
                     Element productNameElement = doc.selectFirst(".sc-kpDqfm.gXZPqL");
                     String productName = productNameElement != null ? productNameElement.text() : "Nome do Produto Não Encontrado";
     
-                    // Obtém a URL da imagem do produto
                     Element productImageElement = doc.selectFirst(".sc-cWSHoV.jnuWYf");
                     String productImageUrl = productImageElement != null ? productImageElement.absUrl("src") : "URL da Imagem Não Encontrada";
     
@@ -49,7 +46,7 @@ public class Crawl2 {
                     System.out.println("Link do Produto: " + url);
                     System.out.println("Preço do Produto: " + price);
                     System.out.println("URL da Imagem: " + productImageUrl);
-                    return;  // Interrompe a busca após encontrar o preço
+                    return;  
                 } else {
                     System.out.println("Elemento com classe 'price-value' não encontrado no link: " + url);
                 }
