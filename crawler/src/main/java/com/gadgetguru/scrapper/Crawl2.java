@@ -1,5 +1,6 @@
 package com.gadgetguru.scrapper;
 
+import com.gadgetguru.scrapper.controllers.Product;
 import java.io.IOException;
 import java.util.ArrayList;
 import org.jsoup.Jsoup;
@@ -11,15 +12,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class Crawl2 {
 
-    private String searchTerm;
-
-    public void crawlForProduct(String searchTerm) {
-        this.searchTerm = searchTerm.replaceAll("-", "+").replaceAll("[^a-zA-Z0-9-]", "");
-        String url = "https://www.magazineluiza.com.br/busca/" + this.searchTerm;
-        crawl2(1, url, new ArrayList<>());
+    public Product crawlForProduct(String searchTerm) {
+        String processedSearchTerm = searchTerm.replaceAll("-", "+").replaceAll("[^a-zA-Z0-9-]", "");
+        String url = "https://www.magazineluiza.com.br/busca/" + processedSearchTerm;
+        return crawl2(1, url, new ArrayList<>());
     }
 
-    private static void crawl2(int level, String url, ArrayList<String> visited) {
+    private static Product crawl2(int level, String url, ArrayList<String> visited) {
         if (level <= 5) {
             Document doc = request(url, visited);
             if (doc != null) {
@@ -27,8 +26,7 @@ public class Crawl2 {
                 for (Element productLink : productLinks) {
                     String productUrl = productLink.absUrl("href");
                     if (!visited.contains(productUrl)) {
-                        crawl2(level + 1, productUrl, visited);
-                        return;  
+                        return crawl2(level + 1, productUrl, visited);
                     }
                 }
     
@@ -42,16 +40,23 @@ public class Crawl2 {
                     Element productImageElement = doc.selectFirst(".sc-cWSHoV.jnuWYf");
                     String productImageUrl = productImageElement != null ? productImageElement.absUrl("src") : "URL da Imagem Não Encontrada";
     
+                    // Criando um objeto ProductData e retornando os dados do produto
+                    Product productData2 = new Product();
+                    productData2.setName(productName);
+                    productData2.setLink(url);
+                    productData2.setPrice(price);
+                    productData2.setImageUrl(productImageUrl);
                     System.out.println("Nome do Produto: " + productName);
                     System.out.println("Link do Produto: " + url);
                     System.out.println("Preço do Produto: " + price);
                     System.out.println("URL da Imagem: " + productImageUrl);
-                    return;  
+                    return productData2;
                 } else {
                     System.out.println("Elemento com classe 'price-value' não encontrado no link: " + url);
                 }
             }
         }
+        return null;
     }
 
     private static Document request(String url, ArrayList<String> v) {
