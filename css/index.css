@@ -2,7 +2,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 150vh;
     margin: 0;
     background: linear-gradient(180deg, #001E29 0%, #68A4AF 46%, #FEFEE6 100%);
 }
@@ -10,13 +10,13 @@ body {
 img{
     position:absolute;
     bottom: 50%;
-    right: 40%;
+    right: 36.80%;
 }
 
 input[type="text"] {
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 5px;
     width: 650px;
     cursor:text;
