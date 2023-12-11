@@ -3,12 +3,12 @@ body{
     align-items:center ;
     justify-content: center;
     margin: 0;
-    height: 100vh;
+    height: 200vh;
     background: linear-gradient(180deg, #001E29 0%, #68A4AF 46%, #FEFEE6 100%);
 }
 .container{
-    margin-top: 250px;
-    margin-bottom: 200px;
+    margin-top: 200px;
+    margin-bottom: 450px;
     height: 851px;
     width: 1550px;
     display: grid;
