@@ -1,5 +1,6 @@
 package com.gadgetguru.scrapper.controllers;
 
+import org.springframework.ui.Model;
 import com.gadgetguru.scrapper.Crawl;
 import com.gadgetguru.scrapper.Crawl2;
 import com.gadgetguru.scrapper.Crawl3;
@@ -29,10 +30,17 @@ public class SearchController {
     }
 
     @PostMapping("/search")
-    public String searchProduct(@RequestParam("search") String searchTerm) {
-        crawlService.crawlForProduct(searchTerm); // Chama o método do serviço Crawl
-        crawlService2.crawlForProduct(searchTerm); // Chama o método do serviço Crawl2
-        crawlService3.crawlForProduct(searchTerm); // Chama o método do serviço Crawl3
+    public String searchProduct(@RequestParam("search") String searchTerm, Model model) {
+
+        Product produto1 = crawlService.crawlForProduct(searchTerm);
+        model.addAttribute("product1",produto1);
+
+        Product produto2 = crawlService2.crawlForProduct(searchTerm); 
+        model.addAttribute("product2", produto2);
+
+        Product produto3 = crawlService3.crawlForProduct(searchTerm);
+        model.addAttribute("product3", produto3);
         return "result"; 
     }
+    
 }

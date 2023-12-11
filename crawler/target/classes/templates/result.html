@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,34 +7,45 @@
     <link rel="shortcut icon" href="imagens/logo.png">
     <script src="https://kit.fontawesome.com/aa10a54ff4.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/result.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .square {
-            width: 400px;
-            height: 400px;
-            margin: 20px;
-            background-color: #ccc;
-            border: 2px solid black; /* Definindo uma borda de 2px sólida preta */
-        }
     </style>
 </head>
 <body>
-    <img src="imagens/logo.png" alt="" height="200" width="200">
-    <div class="container">
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
+
+    <div class="card">
+        <img class="card-img-top" th:src="${product1.imageUrl}" alt="imagem não encontrada"  width="150" height ="150">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${product1.name}"></h5>
+            <p class="card-text" th:text="${product1.price}"></p>
+            <img class="origem" src="imagens/logoKABUM.png" width="75" height ="75"/>
+            <a th:href="${product1.link}" class="btn btn-primary" target="_blank">Comprar</a>
+        </div>
     </div>
+    
+    <div class="card">
+        <img class="card-img-top" th:src="${product2.imageUrl}" alt="imagem não encontrada" width="150" height ="150">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${product2.name}"></h5>
+            <p class="card-text" th:text="${product2.price}"></p>
+            <img class="origem" src="imagens/logoMAGALU.png" width="35" height ="35"/>
+            <a th:href ="${product2.link}" class="btn btn-primary" target="_blank">Comprar</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img class="card-img-top" th:src="${product3.imageUrl}" alt="imagem não encontrada"  width="150" height ="150">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${product3.name}"></h5>
+            <p class="card-text" th:text="${product3.price}"></p>
+            <img class="origem" src="imagens/logoGK.png" width="45" height ="45"/>
+            <a th:href ="${product3.link}" class="btn btn-primary" target="_blank">Comprar</a>
+        </div>
+    </div>
+    <img class ="logo-principal"src="imagens/logo.png" alt="" height="150" width="150">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
