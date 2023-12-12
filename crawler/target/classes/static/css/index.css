@@ -7,7 +7,7 @@ body {
     background: linear-gradient(180deg, #001E29 0%, #68A4AF 46%, #FEFEE6 100%);
 }
 
-img{
+.logo{
     display: flex;
     
 }
@@ -22,7 +22,7 @@ input[type="text"] {
 }
 
 button {
-    padding: 10px 15px;
+    padding: 7px 10px;
     font-size: 16px;
     background-color: #50615D;
     color: #ffffff;

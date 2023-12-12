@@ -1,4 +1,5 @@
-# trabalho-final-POO
+
+
 
 Web Scrapper feito em java utilizando jsoup e thymeleaf!
 
@@ -9,3 +10,4 @@ Para execução basta entrar nas pastas `crawler->src->main->java->com->gadgetgu
 abrir o arquivo `ScrapperAplication.java` e clicar em  `run` 
 
 em seguida entre no [localhost](http://localhost:8080) e pesquise o item de seu interesse!
+ 

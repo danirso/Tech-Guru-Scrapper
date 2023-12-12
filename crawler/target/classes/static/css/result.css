@@ -6,40 +6,33 @@ body{
     height: 100vh;
     background: linear-gradient(180deg, #001E29 0%, #68A4AF 46%, #FEFEE6 100%);
 }
-.container{
-    margin-top: 250px;
-    margin-bottom: 200px;
-    height: 851px;
-    width: 1550px;
-    display: grid;
-    grid-template-columns: repeat(7,200px);
-    grid-template-rows: repeat(3,270px) ;
-    gap: 20px;
+
+.card{
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    width: 20%;
 }
-img{
+
+.card-text{
+    font-size: 22;
+}
+
+.card-img-top{
+    width: 30%;
+    height: 30%;
+    align-self: auto;
+}
+
+.logo-principal{
    position: absolute;
    left: 44.8%;
    top: -10px;
 }
 
-.red{
-    background-color: red;   
+.btn-primary{
+     background-color: #f75d2e !important;
 }
-.blue{
-    background-color: blue;
-}
-.green{
-    background-color: green;
-}
-.yellow{
-    background-color: yellow;
-}
-.black{
-    background-color: black;
-}
-.white{
-    background-color: white;
-}
-.pink{
-    background-color: pink;
+
+.btn-primary:hover{
+    background-color: #5AA18E !important;
 }
