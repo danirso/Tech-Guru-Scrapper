@@ -10,7 +10,7 @@ body{
 .card{
     margin-left: 2.5%;
     margin-right: 2.5%;
-    width: auto;
+    width: 20%;
 }
 
 .card-text{
@@ -27,4 +27,12 @@ body{
    position: absolute;
    left: 44.8%;
    top: -10px;
+}
+
+.btn-primary{
+     background-color: #f75d2e !important;
+}
+
+.btn-primary:hover{
+    background-color: #5AA18E !important;
 }

@@ -40,7 +40,7 @@ public class Crawl {
 
                     // Pesquisar no Google Imagens usando o nome do produto
                     String googleSearchUrl = "https://www.google.com.br/search?q=" + productName + "&tbm=isch";
-                    String googleImageLink = getGoogleImageLink(productName, googleSearchUrl);
+                    String googleImageLink = getGoogleImageLink(productName, googleSearchUrl.replaceAll(" ", "+"));
 
                     // Criando um objeto ProductData e retornando os dados do produto
                     Product productData = new Product();
