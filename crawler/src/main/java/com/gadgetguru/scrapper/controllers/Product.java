@@ -7,10 +7,8 @@ public class Product {
     private String imageUrl;
 
     public Product() {
-        // Construtor padrão
     }
 
-    // Construtor com parâmetros, caso necessário
 
     public String getName() {
         return name;
